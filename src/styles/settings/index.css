@@ -1,0 +1,13 @@
+:root {
+  --bg-neutral-0: #ffffff;
+  --bg-neutral-1: #fffdfd;
+  --bg-neutral-8: #dddcdc;
+  --bg-neutral-9: #000000;
+  --bg-neutral-transparent: #dddcdc8c;
+
+  --bg-primary: #76b0f4;
+  --bg-gray: #f3f5f7;
+  --bg-yellow: #ffeb3b;
+  --bg-light-primary: #00000078;
+  --bg-purple-light: #fcfbff;
+}

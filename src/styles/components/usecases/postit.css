@@ -1,0 +1,40 @@
+.postit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postit--primary {
+  border: 1px solid var(--bg-yellow);
+  background-color: var(--bg-yellow);
+  color: var(--bg-neutral-9);
+}
+
+.postit--readonly {
+  border: 1px solid var(--bg-neutral-9);
+  background-color: var(--bg-neutral-0);
+  color: var(--bg-neutral-9);
+}
+
+.postit--secondary {
+  border: 1px solid var(--bg-yellow);
+  background-color: var(--bg-yellow);
+  color: var(--bg-neutral-9);
+}
+
+.postit--tertiary {
+  border: 1px solid var(--bg-yellow);
+  background-color: var(--bg-yellow);
+  color: var(--bg-neutral-9);
+}
+
+.postit--dimensions {
+  width: auto;
+  min-width: 80px;
+  min-height: 80px;
+}
+
+.postit__inputnumber--dimensions {
+  max-width: 80px;
+  text-align: center;
+}

@@ -1,0 +1,27 @@
+.input {
+  outline: none;
+
+  width: 100%;
+}
+
+.input:focus {
+  transition: all 0.3s;
+  border: 1px solid var(--bg-primary);
+}
+
+.input--pd1 {
+  padding: 10px 5px;
+}
+
+.input--border1 {
+  border-radius: 6px;
+}
+
+.input--primary {
+  background-color: var(--bg-neutral-1);
+  border: 1px solid var(--bg-neutral-8);
+}
+
+.input--bordernone {
+  border: none;
+}

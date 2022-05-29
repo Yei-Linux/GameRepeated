@@ -1,0 +1,20 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body,
+input,
+select,
+option,
+button {
+  font-family: "Mali", cursive;
+}
