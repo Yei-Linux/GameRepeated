@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Button component Should render comnponent the user will see 1`] = `
+<DocumentFragment>
+  <button
+    class="button button button--primary button--pd1"
+    type="button"
+  >
+    UI Button
+  </button>
+</DocumentFragment>
+`;

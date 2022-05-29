@@ -2,7 +2,22 @@
 
 ## 1. TESTING REACTDOM AND SMALL COMPONENTS
 
+    - Main concepts and setup jest with rtl
+        - Jest
+        - RTL
+        - JestConfig (options , transform, env , etc, es6 or less)
+        - Running tests
+        - Setup Jest and extends
+        - Project Structure
+        - Describe , test(it) , done, after all , after each , before all , before each,
+        - Render , screen , matchers
+    - Snapshots and good practices
+    - Fire Event vs UserEvent
+
 ## 2. TESTING CONTEXT CONNECTED COMPONENTS
+
+    - Act
+    - WaitFor
 
 ## 3. TESTING REDUX CONNECTED COMPONENTS
 
