@@ -1,11 +1,12 @@
-import classNames from "classnames";
-import React from "react";
+import classNames from 'classnames'
+import React from 'react'
 
 const Input = ({
+  ariaLabel,
   border = true,
   onFocus,
   onBlur,
-  variation = "primary",
+  variation = 'primary',
   name,
   defaultValue,
   onChange,
@@ -18,6 +19,7 @@ const Input = ({
 }) => {
   return (
     <input
+      aria-label={ariaLabel}
       onClick={onClick}
       onBlur={onBlur}
       onFocus={onFocus}
@@ -28,18 +30,18 @@ const Input = ({
       style={css}
       className={classNames(
         className,
-        "input",
+        'input',
         `input--${variation}`,
         `input--border${borderRadius}`,
         `input--pd${padding}`,
         {
-          "input--bordernone": !border,
+          'input--bordernone': !border,
         }
       )}
       name={name}
       value={defaultValue}
     />
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

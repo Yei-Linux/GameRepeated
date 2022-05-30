@@ -1,10 +1,11 @@
-import Container from "../ui/layouts/Container";
-import Exercise from "./Exercise";
-import Solution from "./Solution";
-import Button from "../ui/atoms/Button";
-import classNames from "classnames";
-import { useExerciseStore } from "../../hooks/useExerciseStore";
-import { Fragment, useEffect } from "react";
+import Container from '../ui/layouts/Container'
+import Exercise from './Exercise'
+import Solution from './Solution'
+import Button from '../ui/atoms/Button'
+import classNames from 'classnames'
+import { useExerciseStore } from '../../hooks/useExerciseStore'
+import { Fragment, useState } from 'react'
+import { useSolution } from '../../hooks/useSolution'
 
 const GameForm = () => {
   const {
@@ -13,60 +14,36 @@ const GameForm = () => {
     waitMs,
     isVisibleQuestion,
     setIsVisibleQuestion,
-  } = useExerciseStore();
+  } = useExerciseStore()
+  const [toggle, setTogle] = useState(false)
 
-  const handleWaitToHideQuestion = () => {
-    setTimeout(() => {
-      setIsVisibleQuestion(false);
-    }, waitMs);
-  };
-
-  useEffect(() => {
-    handleWaitToHideQuestion();
-  }, []);
-
-  const comparison = () => {
-    try {
-      for (let i = 0; i < exercise.length; i++) {
-        const question = exercise[i];
-        const value = solution[`${i}`];
-
-        if (value != question) {
-          throw new Error("Its incorrect the answer");
-        }
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleCompleted = () => {
-    const isValidSolution = Object.entries(solution).every(
-      ([key, value]) => value !== ""
-    );
-
-    if (!isValidSolution) {
-      alert("Its not completed the answer.Please complete your answer.");
-      return;
-    }
-
-    comparison();
-  };
+  const { handleCompleted } = useSolution({
+    exercise,
+    solution,
+    waitMs,
+    setIsVisibleQuestion: (value) => {
+      setTogle(true)
+      setIsVisibleQuestion(value)
+    },
+  })
 
   return (
     <Container>
+      <Container>
+        {!toggle ? 'Read the exercise' : 'Set your solution'}
+      </Container>
       {isVisibleQuestion ? (
         <Exercise />
       ) : (
         <Fragment>
           <Solution />
-          <Container className={classNames("flex", "justify-center")}>
+          <Container className={classNames('flex', 'justify-center')}>
             <Button onClick={handleCompleted}>Completed</Button>
           </Container>
         </Fragment>
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default GameForm;
+export default GameForm

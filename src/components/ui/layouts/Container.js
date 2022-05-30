@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import React from "react";
+import classNames from 'classnames'
+import React from 'react'
 
 const Container = React.forwardRef(
   (
     {
-      as = "div",
+      as = 'div',
       children,
       css,
       className,
@@ -15,7 +15,7 @@ const Container = React.forwardRef(
     },
     ref
   ) => {
-    const Component = as;
+    const Component = as
 
     return (
       <Component
@@ -28,8 +28,10 @@ const Container = React.forwardRef(
       >
         {children}
       </Component>
-    );
+    )
   }
-);
+)
 
-export default Container;
+Container.displayName = 'Container'
+
+export default Container

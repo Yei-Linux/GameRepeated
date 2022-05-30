@@ -1,12 +1,16 @@
-import classNames from "classnames";
-import React from "react";
+import classNames from 'classnames'
+import React from 'react'
 
-const Label = ({ text, className, css }) => {
+const Label = ({ text, className, css, htmlFor }) => {
   return (
-    <label style={css} className={classNames("label", className)}>
+    <label
+      htmlFor={htmlFor}
+      style={css}
+      className={classNames('label', className)}
+    >
       {text}
     </label>
-  );
-};
+  )
+}
 
-export default Label;
+export default Label

@@ -1,23 +1,36 @@
-import classNames from "classnames";
-import { settings } from "../../constants/settings";
-import { useExercise } from "../../hooks/useExercise";
-import { useExerciseStore } from "../../hooks/useExerciseStore";
-import Container from "../ui/layouts/Container";
-import Postit from "./Postit";
+import classNames from 'classnames'
+import { Fragment } from 'react'
+import { settings } from '../../constants/settings'
+import { useExercise } from '../../hooks/useExercise'
+import { useExerciseStore } from '../../hooks/useExerciseStore'
+import Container from '../ui/layouts/Container'
+import Postit from './Postit'
 
-const { postitSize } = settings;
+const { postitSize } = settings
 
 const Exercise = () => {
-  const { exercise, setExercise, type } = useExerciseStore();
+  const { exercise, setExercise, type } = useExerciseStore()
 
-  useExercise({ postitSize, exerciseType: type, done: setExercise });
+  useExercise({
+    postitSize,
+    exerciseType: type,
+    done: setExercise,
+  })
 
   return (
-    <Container className={classNames("flex", "gap-1", "justify-center")}>
-      {exercise &&
-        exercise.map((item, index) => <Postit key={index} text={item} />)}
-    </Container>
-  );
-};
+    <Fragment>
+      {exercise && !!exercise.length && (
+        <Container
+          testId="exercises-container"
+          className={classNames('flex', 'gap-1', 'justify-center')}
+        >
+          {exercise.map((item, index) => (
+            <Postit key={index} text={item} />
+          ))}
+        </Container>
+      )}
+    </Fragment>
+  )
+}
 
-export default Exercise;
+export default Exercise

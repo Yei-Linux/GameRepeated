@@ -1,41 +1,45 @@
-import classNames from "classnames";
-import Container from "../layouts/Container";
-import Input from "./Input";
-import Label from "./Label";
+import Container from '../layouts/Container'
+import Input from './Input'
+import Label from './Label'
 
 const FormItem = ({
-  type = "input",
+  testId,
+  htmlFor,
+  ariaLabel,
+  type = 'input',
+  className,
   classNameInput,
-  label = "",
+  label = '',
   name,
   onChange,
   value,
 }) => {
   const elementTypes = {
     input: Input,
-  };
+  }
 
-  const Element = elementTypes[type];
+  const Element = elementTypes[type]
 
   const handleChange = (e) => {
-    const valueEvent = e.target.value;
+    const valueEvent = e.target.value
     onChange({
       name,
       value: valueEvent,
-    });
-  };
+    })
+  }
 
   return (
-    <Container padding={0}>
-      {label && <Label text={`${label}:`} />}
+    <Container testId={testId} padding={0} className={className}>
+      {label && <Label text={`${label}:`} htmlFor={htmlFor} />}
       <Element
+        ariaLabel={ariaLabel}
         name={name}
         onChange={handleChange}
         defaultValue={value}
         className={classNameInput}
       />
     </Container>
-  );
-};
+  )
+}
 
-export default FormItem;
+export default FormItem

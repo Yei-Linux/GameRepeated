@@ -11,9 +11,8 @@
 }
 
 .postit--readonly {
-  border: 1px solid var(--bg-neutral-9);
-  background-color: var(--bg-neutral-0);
-  color: var(--bg-neutral-9);
+}
+.postit--notreadonly {
 }
 
 .postit--secondary {
