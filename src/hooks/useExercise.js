@@ -1,4 +1,9 @@
 import { useEffect } from 'react'
+import {
+  fetchCountries,
+  fetchNames,
+  fetchWordRandom,
+} from '../services/exercise'
 
 export const useExercise = ({ postitSize, exerciseType, done }) => {
   const getRandomNumber = () => Number((Math.random() * 10).toFixed(0))
@@ -11,29 +16,46 @@ export const useExercise = ({ postitSize, exerciseType, done }) => {
     done(numbers)
   }
 
-  const fetchWordRandom = async () => {
-    try {
-      const response = await fetch(
-        'https://random-word-api.herokuapp.com/word?number=5'
-      )
-      const data = await response.json()
-
-      return data
-    } catch (error) {
-      console.log('Error: ', error.message)
-      return []
-    }
-  }
-
   const buildWordExercise = async () => {
     const words = await fetchWordRandom()
 
     done(words)
   }
 
+  const buildCountries = async () => {
+    const countries = await fetchCountries()
+
+    const countriesArr = Object.entries(countries).reduce(
+      (acc, currentValue) => {
+        const [, value] = currentValue
+        const { country } = value
+        return [...acc, ...[country]]
+      },
+      []
+    )
+
+    done(countriesArr.slice(0, 5))
+  }
+
+  const buildNames = async () => {
+    const names = await fetchNames()
+
+    done(names)
+  }
+
   const buildExercise = async () => {
     if (exerciseType === 'numbers') {
       buildNumberExercise()
+      return
+    }
+
+    if (exerciseType === 'countries') {
+      await buildCountries()
+      return
+    }
+
+    if (exerciseType === 'names') {
+      await buildNames()
       return
     }
 

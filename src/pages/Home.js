@@ -1,12 +1,15 @@
-import GameForm from "../components/usecases/GameForm";
-import ExerciseStore from "../store/context/Exercise/store";
+import CurtainReveal from '../components/ui/atoms/CurtainReveal'
+import GameLayout from '../components/usecases/GameLayout'
+import ExerciseStore from '../store/context/Exercise/store'
 
 const Home = () => {
   return (
     <ExerciseStore>
-      <GameForm />
+      <CurtainReveal revealCheck={() => true} isRevealed={false}>
+        <GameLayout />
+      </CurtainReveal>
     </ExerciseStore>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
