@@ -23,6 +23,7 @@ export const fetchNames = async () => {
     request.append('X-Requested-With', 'XMLHttpRequest')
 
     const { data } = await axiosRandomApi.post('/Name', request)
+
     return data
   } catch (error) {
     console.log('Error: ', error.message)

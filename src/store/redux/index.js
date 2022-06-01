@@ -21,10 +21,17 @@ const middleware = [
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 ].filter(Boolean)
 
-const store = createReduxStore(reducer, initialState, compose(...middleware))
+const defaultStore = {
+  storeInitialState: initialState,
+}
+
+const createStore = ({ storeInitialState } = defaultStore) => {
+  return createReduxStore(reducer, storeInitialState, compose(...middleware))
+}
+const store = createStore()
 
 const persistor = persistStore(store)
 
-const reduxRoot = { store, persistor }
+const reduxRoot = { store, persistor, createStore, defaultStore }
 
 export default reduxRoot

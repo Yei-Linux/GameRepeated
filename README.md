@@ -10,7 +10,7 @@
         - Setup Jest and extends
         - Project Structure
         - Describe , test(it) , done, after all , after each , before all , before each,
-        - Render , screen , matchers
+        - Render , rerender, screen , matchers
     - Snapshots and good practices
     - Fire Event vs UserEvent
 

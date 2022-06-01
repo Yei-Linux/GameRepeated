@@ -5,6 +5,12 @@ import GameForm from '../../components/usecases/GameForm'
 import { act } from 'react-dom/test-utils'
 import userEvent from '@testing-library/user-event'
 
+import reduxConfig from '../../store/redux/index'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/lib/integration/react'
+
+const { persistor, createStore } = reduxConfig
+
 describe('The GameForm component', () => {
   const exercise = [8, 5, 9, 1, 3]
 
@@ -36,9 +42,13 @@ describe('The GameForm component', () => {
   }
 
   const component = ({ props, storeValue, storeEvents } = propsComponent) => (
-    <ExerciseContext.Provider value={{ ...storeEvents, ...storeValue }}>
-      <GameForm {...props} />
-    </ExerciseContext.Provider>
+    <Provider store={createStore()}>
+      <PersistGate persistor={persistor}>
+        <ExerciseContext.Provider value={{ ...storeEvents, ...storeValue }}>
+          <GameForm {...props} />
+        </ExerciseContext.Provider>
+      </PersistGate>
+    </Provider>
   )
 
   const setupComponent = ({
