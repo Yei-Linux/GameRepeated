@@ -18,8 +18,6 @@ const {
 const { numbers, words, countries, names } = mocks
 
 describe('The Exercise component', () => {
-  const testId = 'exercises-container'
-
   const defaultProps = {}
   const events = {
     setExercise: jest.fn(),
@@ -72,23 +70,49 @@ describe('The Exercise component', () => {
       numbers.map((item) => {
         randomSpy.mockReturnValueOnce(item / 10)
       })
-
-      setupComponent()
     })
 
     afterEach(() => {
       jest.spyOn(window.Math, 'random').mockRestore()
     })
 
-    it('Should render exercise component', () => {
-      const exerciseComponent = screen.getByTestId(testId)
-
-      expect(exerciseComponent).toBeInTheDocument()
-    })
-
-    it('Should valid render readonly postits in exercise', () => {
+    it('Should valid render readonly postits in exercise', async () => {
       const { setExercise } = events
+
+      const { rerender } = setupComponent({
+        ...propsComponent,
+        storeRedux: {
+          ...storeInitialState,
+          game: {
+            ...storeInitialState.game,
+            type: 'numbers',
+          },
+        },
+        storeValue: {
+          ...values,
+          exercise: [],
+        },
+      })
+
       expect(setExercise).toBeCalledTimes(1)
+
+      rerender(
+        component({
+          ...propsComponent,
+          storeRedux: {
+            ...storeInitialState,
+            game: {
+              ...storeInitialState.game,
+              type: 'numbers',
+            },
+          },
+          storeValue: {
+            ...values,
+            exercise: numbers,
+          },
+        })
+      )
+
       numbers.map((item) => {
         const readonlyPostitItem = screen.getByText(item)
         expect(readonlyPostitItem).toBeInTheDocument()
@@ -101,20 +125,45 @@ describe('The Exercise component', () => {
       jest.spyOn(window, 'fetch').mockResolvedValue({
         json: () => new Promise((res) => res(words)),
       })
-
-      setupComponent({
-        ...propsComponent,
-        storeValue: {
-          ...values,
-          exercise: words,
-          type: 'words',
-        },
-      })
     })
 
-    it('Should render words postit from exercise', () => {
+    it('Should render words postit from exercise', async () => {
       const { setExercise } = events
-      expect(setExercise).toBeCalledTimes(1)
+
+      const { rerender } = setupComponent({
+        ...propsComponent,
+        storeRedux: {
+          ...storeInitialState,
+          game: {
+            ...storeInitialState.game,
+            type: 'words',
+          },
+        },
+        storeValue: {
+          ...values,
+          exercise: [],
+        },
+      })
+
+      await waitFor(() => expect(setExercise).toBeCalledTimes(1))
+
+      rerender(
+        component({
+          ...propsComponent,
+          storeRedux: {
+            ...storeInitialState,
+            game: {
+              ...storeInitialState.game,
+              type: 'words',
+            },
+          },
+          storeValue: {
+            ...values,
+            exercise: words,
+          },
+        })
+      )
+
       words.map((item) => {
         const notReadonlyPostitItem = screen.getByText(item)
         expect(notReadonlyPostitItem).toBeInTheDocument()
@@ -122,7 +171,7 @@ describe('The Exercise component', () => {
     })
   })
 
-  describe('Exercise Country Type', () => { 
+  describe('Exercise Country Type', () => {
     beforeEach(() => {
       jest.spyOn(axios, 'get').mockResolvedValue({
         data: { data: countries },

@@ -59,7 +59,10 @@ export const useExercise = ({ postitSize, exerciseType, done }) => {
       return
     }
 
-    await buildWordExercise()
+    if (exerciseType === 'words') {
+      await buildWordExercise()
+      return
+    }
   }
 
   useEffect(() => {

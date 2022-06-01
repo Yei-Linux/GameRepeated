@@ -28,7 +28,7 @@ const GameForm = () => {
   })
 
   return (
-    <Container>
+    <Container testId="game-form">
       <Container>
         {!toggle ? 'Read the exercise' : 'Set your solution'}
       </Container>

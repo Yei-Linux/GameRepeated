@@ -8,11 +8,12 @@ import userEvent from '@testing-library/user-event'
 import reduxConfig from '../../store/redux/index'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
+import { mocks } from '../../constants/settings'
 
 const { persistor, createStore } = reduxConfig
-
 describe('The GameForm component', () => {
-  const exercise = [8, 5, 9, 1, 3]
+  const { numbers } = mocks
+  const badSolution = [1, 2, 3, 4, 5]
 
   const defaultProps = {}
   const events = {
@@ -25,7 +26,7 @@ describe('The GameForm component', () => {
   const values = {
     isVisibleQuestion: true,
     waitMs: 5000,
-    exercise,
+    exercise: numbers,
     type: 'numbers',
     solution: Array.apply(null, new Array(5)).reduce(
       (acc, _, currentIndex) => ({
@@ -95,7 +96,8 @@ describe('The GameForm component', () => {
   })
 
   describe('Solution section from GameForm', () => {
-    it('Should solution is displayed ready to complete', async () => {
+    it('Should the solution found is bad and show alert with message', async () => {
+      const { setSolution } = events
       const {
         storeValue: { waitMs },
       } = propsComponent
@@ -124,9 +126,14 @@ describe('The GameForm component', () => {
 
       expect(postits).toHaveLength(5)
 
-      const firstInput = screen.getByRole('textbox', { name: /0/i })
-      userEvent.type(firstInput, 'abc')
-      expect(firstInput).toBeInTheDocument()
+      badSolution.map((item, index) => {
+        const regexPattern = new RegExp(index, 'i')
+        const input = screen.getByRole('textbox', { name: regexPattern })
+        userEvent.type(input, `${item}`)
+        expect(input).toBeInTheDocument()
+      })
+
+      expect(setSolution).toHaveBeenCalledTimes(5)
 
       rerender(
         component({
@@ -134,7 +141,68 @@ describe('The GameForm component', () => {
           storeValue: {
             ...values,
             isVisibleQuestion: false,
-            solution: exercise.reduce(
+            solution: badSolution.reduce(
+              (acc, currentValue, currentIndex) => ({
+                ...acc,
+                [`${currentIndex}`]: currentValue,
+              }),
+              {}
+            ),
+          },
+        })
+      )
+
+      const completedButton = screen.queryByText('Completed')
+      userEvent.click(completedButton)
+
+      expect(alertMock).toHaveBeenCalledTimes(1)
+    }, 13000)
+    it('Should solution is displayed ready to complete', async () => {
+      const { setSolution } = events
+      const {
+        storeValue: { waitMs },
+      } = propsComponent
+
+      const alertMock = jest.fn()
+      jest.spyOn(window, 'alert').mockImplementation(alertMock)
+
+      const { rerender } = setupComponent()
+
+      await act(async () => {
+        await new Promise((res) =>
+          setTimeout(() => {
+            res()
+          }, waitMs)
+        )
+      })
+
+      rerender(
+        component({
+          ...propsComponent,
+          storeValue: { ...values, isVisibleQuestion: false },
+        })
+      )
+
+      const postits = screen.queryAllByTestId('postitNotReadonly')
+
+      expect(postits).toHaveLength(5)
+
+      numbers.map((item, index) => {
+        const regexPattern = new RegExp(index, 'i')
+        const input = screen.getByRole('textbox', { name: regexPattern })
+        userEvent.type(input, `${item}`)
+        expect(input).toBeInTheDocument()
+      })
+
+      expect(setSolution).toHaveBeenCalledTimes(5)
+
+      rerender(
+        component({
+          ...propsComponent,
+          storeValue: {
+            ...values,
+            isVisibleQuestion: false,
+            solution: numbers.reduce(
               (acc, currentValue, currentIndex) => ({
                 ...acc,
                 [`${currentIndex}`]: currentValue,

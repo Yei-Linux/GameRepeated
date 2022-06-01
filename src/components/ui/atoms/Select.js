@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 
 const Select = ({
+  ariaLabel,
   variation = 'primary',
   options,
   name,
@@ -13,6 +14,7 @@ const Select = ({
 }) => {
   return (
     <select
+      aria-label={ariaLabel}
       onChange={onChange}
       placeholder={placeholder}
       style={css}
@@ -25,8 +27,8 @@ const Select = ({
       name={name}
       value={defaultValue}
     >
-      {options.map(({ value, label }) => (
-        <option key={value} value={value}>
+      {options.map(({ value, label, testId }) => (
+        <option data-testid={testId} key={value} value={value}>
           {label}
         </option>
       ))}

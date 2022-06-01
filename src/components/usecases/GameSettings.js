@@ -26,15 +26,20 @@ const GameSettings = () => {
   }
 
   return (
-    <Container>
+    <Container testId="game-settings">
       <Text as="h3" weight={6}>
         How fast do you want to play this time? 😀
       </Text>
       <Container className={classNames('flex', 'justify-center')}>
         <Select
+          ariaLabel="gameTime"
           defaultValue={waitMs}
-          name="gameType"
-          options={times.map((time) => ({ value: time, label: time }))}
+          name="gameTime"
+          options={times.map((time) => ({
+            value: time,
+            label: time,
+            testId: `testid-${time}`,
+          }))}
           onChange={handleChangeTime}
         />
       </Container>

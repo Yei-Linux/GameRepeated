@@ -26,7 +26,8 @@ const Home = () => {
   const isValidUserName = (userNameProp = userName) => {
     if (!userNameProp) return false
 
-    return userNameProp.length > 5
+    const isValid = userNameProp.length >= 5
+    return isValid
   }
 
   const handleChangeUserName = () => {
@@ -47,6 +48,8 @@ const Home = () => {
 
           <Container className={classNames('flex', 'justify-center')}>
             <Input
+              ariaLabel="userName"
+              name="userName"
               placeholder="Min 5 characters..."
               defaultValue={userNameInput}
               onChange={handleChangeUserNameInput}
