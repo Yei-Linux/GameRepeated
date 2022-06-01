@@ -5,8 +5,9 @@ import {
   GAME_SET_UP_STREAKS,
 } from '../types'
 
-export const setToggleStartGame = () => ({
+export const setToggleStartGame = (payload) => ({
   type: GAME_SET_TOGGLE_STARTGAME,
+  payload,
 })
 
 export const setGameType = (gameType) => ({

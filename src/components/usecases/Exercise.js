@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import { Fragment } from 'react'
+import { useSelector } from 'react-redux'
 import { settings } from '../../constants/settings'
 import { useExercise } from '../../hooks/useExercise'
 import { useExerciseStore } from '../../hooks/useExerciseStore'
@@ -9,7 +10,8 @@ import Postit from './Postit'
 const { postitSize } = settings
 
 const Exercise = () => {
-  const { exercise, setExercise, type } = useExerciseStore()
+  const { type } = useSelector((state) => state.game)
+  const { exercise, setExercise } = useExerciseStore()
 
   useExercise({
     postitSize,

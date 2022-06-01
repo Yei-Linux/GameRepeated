@@ -21,7 +21,7 @@ const gameReducer = (state = gameInitialState, action) => {
     }),
     [GAME_SET_TOGGLE_STARTGAME]: () => ({
       ...state,
-      isStartGame: !state.isStartGame,
+      isStartGame: payload !== undefined ? payload : !state.isStartGame,
     }),
     [GAME_SET_UP_STREAKS]: () => ({
       ...state,
@@ -36,8 +36,6 @@ const gameReducer = (state = gameInitialState, action) => {
   const item = actions[type]
 
   if (!item) return state
-
-  console.log(item)
 
   return item()
 }

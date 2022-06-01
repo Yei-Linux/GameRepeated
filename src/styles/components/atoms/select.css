@@ -1,0 +1,28 @@
+.select {
+  outline: none;
+  border-radius: 10px;
+
+  width: 100%;
+}
+
+.select--primary {
+  background-color: var(--bg-neutral-1);
+  border: 1px solid var(--bg-neutral-8);
+}
+
+.select--pd0 {
+  padding: 0;
+}
+
+.select--pd1 {
+  padding: 10px;
+}
+
+.select:hover {
+  cursor: pointer;
+}
+
+.select:focus {
+  transition: all 0.3s;
+  border: 1px solid var(--bg-primary);
+}

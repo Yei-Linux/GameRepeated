@@ -1,31 +1,30 @@
 import {
   applyMiddleware,
-  combineReducers,
   compose,
   createStore as createReduxStore,
 } from 'redux'
 import thunk from 'redux-thunk'
-import gameReducer, { gameInitialState } from './reducers/game'
-import userReducer, { userInitialState } from './reducers/user'
+import { persistStore } from 'redux-persist'
+import { gameInitialState } from './reducers/game'
+import makeRootReducer from './reducers/makeRootReducers'
+import { userInitialState } from './reducers/user'
 
 export const initialState = {
   game: gameInitialState,
   user: userInitialState,
 }
 
-export const reducer = combineReducers({ game: gameReducer, user: userReducer })
+export const reducer = makeRootReducer()
 
 const middleware = [
   applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 ].filter(Boolean)
 
-const defaultStore = {
-  storeReducer: reducer,
-  storeInitialState: initialState,
-}
+const store = createReduxStore(reducer, initialState, compose(...middleware))
 
-const createStore = ({ storeReducer, storeInitialState } = defaultStore) =>
-  createReduxStore(storeReducer, storeInitialState, compose(...middleware))
+const persistor = persistStore(store)
 
-export default createStore
+const reduxRoot = { store, persistor }
+
+export default reduxRoot

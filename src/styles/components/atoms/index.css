@@ -1,6 +1,8 @@
-@import "./button.css";
-@import "./input.css";
-@import "./label.css";
-@import "./link.css";
-@import "./loader.css";
-@import "./text.css";
+@import './button.css';
+@import './input.css';
+@import './label.css';
+@import './link.css';
+@import './loader.css';
+@import './text.css';
+@import './icon.css';
+@import './select.css';
