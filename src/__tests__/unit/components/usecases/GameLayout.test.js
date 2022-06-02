@@ -5,7 +5,6 @@ import { mocks } from '../../../constants/settings'
 import ExerciseContext from '../../../store/context/Exercise/context'
 import reduxConfig from '../../../store/redux/index'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import userEvent from '@testing-library/user-event'
 
 const {
@@ -21,7 +20,7 @@ describe('The GameLayout component', () => {
   const events = {
     setExercise: jest.fn(),
     setExerciseType: jest.fn(),
-    setSolution: jest.fn(),
+    setSolution: jest.fn(), 
     setWaitMs: jest.fn(),
     setIsVisibleQuestion: jest.fn(),
   }

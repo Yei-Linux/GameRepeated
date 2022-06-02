@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import Postit from '../../../components/usecases/Postit'
 
-import '@testing-library/jest-dom/extend-expect'
 import ExerciseContext from '../../../store/context/Exercise/context'
 import userEvent from '@testing-library/user-event'
+
+import suite from '../../../helpers/suite'
 
 describe('The Postit component', () => {
   const defaultProps = {
@@ -49,6 +50,11 @@ describe('The Postit component', () => {
     )
 
   describe('Postit readonly component', () => {
+    it('Should render Postit component of readonly type', () => {
+      const { asFragment } = setupComponent()
+
+      expect(asFragment()).toMatchSnapshot()
+    })
     it('Should make readonly the postit component', () => {
       const { text } = defaultProps
       setupComponent()
@@ -66,6 +72,16 @@ describe('The Postit component', () => {
         text: undefined,
         readonly: false,
       })
+    })
+
+    it('Should render Postit component of not readonly type', () => {
+      const { asFragment } = setupComponent({
+        ...defaultProps,
+        text: undefined,
+        readonly: false,
+      })
+
+      expect(asFragment()).toMatchSnapshot()
     })
 
     it('Should render label and input from postit', () => {
@@ -86,6 +102,12 @@ describe('The Postit component', () => {
 
       expect(setSolution).toBeCalledTimes(3)
       expect(inputPostit).toHaveValue('abc')
+    })
+    it('Should mock operations function', () => {
+      jest.spyOn(suite, 'add').mockReturnValue(3)
+      const result = suite.operations('suma', 1, 2)
+
+      expect(result).toBe(3)
     })
   })
 })

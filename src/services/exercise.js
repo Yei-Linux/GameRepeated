@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { axiosRandomApi } from '../settings/axios'
 
-export const fetchWordRandom = async () => {
+const fetchWordRandom = async () => {
   try {
     const response = await fetch(
       'https://random-word-api.herokuapp.com/word?number=5'
@@ -15,7 +15,7 @@ export const fetchWordRandom = async () => {
   }
 }
 
-export const fetchNames = async () => {
+const fetchNames = async () => {
   try {
     const request = new FormData()
     request.append('type', 'firstname')
@@ -31,7 +31,7 @@ export const fetchNames = async () => {
   }
 }
 
-export const fetchCountries = async () => {
+const fetchCountries = async () => {
   try {
     const {
       data: { data },
@@ -43,3 +43,7 @@ export const fetchCountries = async () => {
     return []
   }
 }
+
+const exerciseService = { fetchWordRandom, fetchNames, fetchCountries }
+
+export default exerciseService

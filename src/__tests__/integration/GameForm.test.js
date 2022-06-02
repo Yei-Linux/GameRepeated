@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import ExerciseContext from '../../store/context/Exercise/context'
 import GameForm from '../../components/usecases/GameForm'
 import { act } from 'react-dom/test-utils'

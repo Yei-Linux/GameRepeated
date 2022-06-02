@@ -5,7 +5,6 @@ import { mocks } from '../../../constants/settings'
 import Home from '../../../pages/Home'
 import ExerciseContext from '../../../store/context/Exercise/context'
 import reduxConfig from '../../../store/redux'
-import '@testing-library/jest-dom/extend-expect'
 import userEvent from '@testing-library/user-event'
 
 const {

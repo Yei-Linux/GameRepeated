@@ -5,26 +5,36 @@
     - Main concepts and setup jest with rtl
         - Jest
         - RTL
-        - JestConfig (options , transform, env , etc, es6 or less)
+        - JestConfig and eslint
         - Running tests
         - Setup Jest and extends
         - Project Structure
-        - Describe , test(it) , done, after all , after each , before all , before each,
-        - Render , rerender, screen , matchers
-    - Snapshots and good practices
-    - Fire Event vs UserEvent
+        - Describe , test(it) , done, after all , after each , before all , before each
+        - Render, screen , matchers
+    - FireEvent vs UserEvent
+    - Snapshots
+    - Good practices
 
-## 2. TESTING CONTEXT CONNECTED COMPONENTS
+## 2. TESTING CONTEXT CONNECTED COMPONENTS AND REDUX
 
     - Act
     - WaitFor
+    - Mocks context
+    - rerender
+    - Testing reducers with context
+    - Testing reducers with redux store
 
-## 3. TESTING REACT HOOKS
+## 3. TESTING REACT HOOKS AND API CONNECTED COMPONENTS(FETCH AND AXIOS)
 
-## 4. TESTING API CONNECTED COMPONENTS(FETCH AND AXIOS)
+    - renderHook
+    - jest.fn and returnValues on callbacks
+    - jest.spyOn
+    - jest.mock with modules
+    - mock resolved value
+    - mock resolved value once
 
-## 5. TESTING EXTERNAL LIBRARIES TO MOCK(MOCKS AND FIXTURES)
+## 5. TESTING REACT ROUTER COMPONENTS
 
-## 6. TESTING REACT ROUTER COMPONENTS
-
-## 7. TESTING REDUX CONNECTED COMPONENTS
+    - test react router
+    - coverage
+    - sonarqube

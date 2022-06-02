@@ -6,7 +6,6 @@ import ExerciseContext from '../../../store/context/Exercise/context'
 import GameSettings from '../../../components/usecases/GameSettings'
 
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 import userEvent from '@testing-library/user-event'
 
 const {

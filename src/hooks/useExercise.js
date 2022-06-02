@@ -1,29 +1,24 @@
 import { useEffect } from 'react'
-import {
-  fetchCountries,
-  fetchNames,
-  fetchWordRandom,
-} from '../services/exercise'
+import dataHelper from '../helpers/data'
+import exerciseService from '../services/exercise'
 
 export const useExercise = ({ postitSize, exerciseType, done }) => {
-  const getRandomNumber = () => Number((Math.random() * 10).toFixed(0))
-
   const buildNumberExercise = () => {
     const numbers = Array.apply(undefined, new Array(postitSize)).map(() =>
-      getRandomNumber()
+      dataHelper.getRandomNumber()
     )
 
-    done(numbers)
+    return numbers
   }
 
   const buildWordExercise = async () => {
-    const words = await fetchWordRandom()
+    const words = await exerciseService.exfetchWordRandom()
 
-    done(words)
+    return words
   }
 
   const buildCountries = async () => {
-    const countries = await fetchCountries()
+    const countries = await exerciseService.fetchCountries()
 
     const countriesArr = Object.entries(countries).reduce(
       (acc, currentValue) => {
@@ -34,40 +29,48 @@ export const useExercise = ({ postitSize, exerciseType, done }) => {
       []
     )
 
-    done(countriesArr.slice(0, 5))
+    return countriesArr.slice(0, 5)
   }
 
   const buildNames = async () => {
-    const names = await fetchNames()
+    const names = await exerciseService.fetchNames()
 
-    done(names)
+    return names
   }
 
   const buildExercise = async () => {
     if (exerciseType === 'numbers') {
-      buildNumberExercise()
-      return
+      const items = buildNumberExercise()
+      return items
     }
 
     if (exerciseType === 'countries') {
-      await buildCountries()
-      return
+      const items = await buildCountries()
+      return items
     }
 
     if (exerciseType === 'names') {
-      await buildNames()
-      return
+      const items = await buildNames()
+      return items
     }
 
     if (exerciseType === 'words') {
-      await buildWordExercise()
-      return
+      const items = await buildWordExercise()
+      return items
     }
   }
 
+  const handler = async () => {
+    const result = await buildExercise()
+
+    if (!result) return
+
+    done(result)
+  }
+
   useEffect(() => {
-    buildExercise()
+    handler()
   }, [])
 
-  return {}
+  return { handler, buildExercise }
 }

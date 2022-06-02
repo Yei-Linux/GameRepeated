@@ -1,8 +1,9 @@
 module.exports = {
   roots: ['<rootDir>/src'],
   testRegex: '(/__tests__/.*\\.test)\\.(js|jsx)$',
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.js?$': 'ts-jest',
+    '\\.(js|jsx)$': 'babel-jest',
   },
 }

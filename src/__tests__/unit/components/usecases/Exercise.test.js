@@ -1,14 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import Exercise from '../../../components/usecases/Exercise'
-import ExerciseContext from '../../../store/context/Exercise/context'
-import reduxConfig from '../../../store/redux'
+import Exercise from '../../../../components/usecases/Exercise'
+import ExerciseContext from '../../../../store/context/Exercise/context'
+import reduxConfig from '../../../../store/redux'
 
-import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import axios from 'axios'
-import { mocks } from '../../../constants/settings'
-import { axiosRandomApi } from '../../../settings/axios'
+import { mocks } from '../../../../constants/settings'
+import { axiosRandomApi } from '../../../../settings/axios'
 
 const {
   persistor,
