@@ -12,7 +12,7 @@ export const useExercise = ({ postitSize, exerciseType, done }) => {
   }
 
   const buildWordExercise = async () => {
-    const words = await exerciseService.exfetchWordRandom()
+    const words = await exerciseService.fetchWordRandom()
 
     return words
   }

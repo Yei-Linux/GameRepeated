@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Input Component Should reder input component 1`] = `
+<DocumentFragment>
+  <input
+    aria-label="buttonTest"
+    autocomplete="off"
+    class="inputCustom input input--primary input--border1 input--pd1"
+    name="buttonTest"
+    placeholder="input"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;

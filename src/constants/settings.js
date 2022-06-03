@@ -7,6 +7,14 @@ export const settings = {
 export const mocks = {
   numbers: [8, 5, 9, 1, 3],
   words: ['test1', 'test2', 'test3', 'test4', 'test5'],
-  countries: ['peru', 'argentina', 'colombia', 'chile', 'bolivia'],
+  countries: ['Peru', 'Colombia', 'Chile', 'Mexico', 'Argentina'],
   names: ['pedro', 'cesar', 'jesus', 'alberto', 'arturo'],
+}
+
+export const countriesMock = {
+  PER: { country: 'Peru' },
+  COL: { country: 'Colombia' },
+  CH: { country: 'Chile' },
+  MEX: { country: 'Mexico' },
+  ARG: { country: 'Argentina' },
 }

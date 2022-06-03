@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react'
 import axios from 'axios'
 import { mocks } from '../../../../constants/settings'
 import { axiosRandomApi } from '../../../../settings/axios'
+import { wait } from '@testing-library/user-event/dist/utils'
 
 const {
   persistor,
@@ -18,6 +19,7 @@ const { numbers, words, countries, names } = mocks
 
 describe('The Exercise component', () => {
   const defaultProps = {}
+
   const events = {
     setExercise: jest.fn(),
     setExerciseType: jest.fn(),
@@ -74,8 +76,7 @@ describe('The Exercise component', () => {
     afterEach(() => {
       jest.spyOn(window.Math, 'random').mockRestore()
     })
-
-    it('Should valid render readonly postits in exercise', async () => {
+    it('Should valid render "numbers" readonly postits in exercise', async () => {
       const { setExercise } = events
 
       const { rerender } = setupComponent({
@@ -91,9 +92,15 @@ describe('The Exercise component', () => {
           ...values,
           exercise: [],
         },
+        storeEvents: {
+          ...events,
+        },
       })
 
-      expect(setExercise).toBeCalledTimes(1)
+      //This is a good example to example differences between wait and waitFor(replicate error no bad name of service exfetchWordRandom)
+      await wait(() => {
+        expect(setExercise).toBeCalledTimes(1)
+      })
 
       rerender(
         component({
@@ -144,7 +151,7 @@ describe('The Exercise component', () => {
         },
       })
 
-      await waitFor(() => expect(setExercise).toBeCalledTimes(1))
+      await wait(() => expect(setExercise).toBeCalledTimes(1))
 
       rerender(
         component({
@@ -194,6 +201,7 @@ describe('The Exercise component', () => {
         },
       })
 
+      //Another good example between wait and waitFor
       await waitFor(() => expect(setExercise).toBeCalledTimes(1))
 
       rerender(

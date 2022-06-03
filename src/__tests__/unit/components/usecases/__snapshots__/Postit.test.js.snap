@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Postit component Postit test with mocked context Postit not readonly component Should render Postit component of not readonly type 1`] = `
+<DocumentFragment>
+  <div
+    class="postit--notreadonly container--pd0"
+    data-testid="postitNotReadonly"
+  >
+    <input
+      aria-label="postItElement"
+      autocomplete="off"
+      class="postit--dimensions postit__inputnumber--dimensions input input--primary input--border1 input--pd1"
+      name="0"
+      type="text"
+      value="abc"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Postit component Postit test with mocked context Postit readonly component Should render Postit component of readonly type 1`] = `
+<DocumentFragment>
+  <div
+    class="postit postit--dimensions postit--primary postit--readonly container--pd1"
+    data-testid="postitReadonly"
+  >
+    PostIt Component
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Postit component Postit test with real context valitading Postit not readonly component Should render Postit component of not readonly type 1`] = `
+<DocumentFragment>
+  <div
+    class="postit--notreadonly container--pd0"
+    data-testid="postitNotReadonly"
+  >
+    <input
+      aria-label="postItElement"
+      autocomplete="off"
+      class="postit--dimensions postit__inputnumber--dimensions input input--primary input--border1 input--pd1"
+      name="0"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Postit component Postit test with real context valitading Postit readonly component Should render Postit component of readonly type 1`] = `
+<DocumentFragment>
+  <div
+    class="postit postit--dimensions postit--primary postit--readonly container--pd1"
+    data-testid="postitReadonly"
+  >
+    PostIt Component
+  </div>
+</DocumentFragment>
+`;

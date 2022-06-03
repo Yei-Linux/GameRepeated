@@ -43,7 +43,7 @@ const Topbar = () => {
 
     setGameTempSelected(value)
     handleToggle(true)
-  }
+  } 
 
   const handleCloseModal = () => {
     setGameTempSelected(null)
@@ -122,6 +122,7 @@ const Topbar = () => {
           >
             <Select
               defaultValue={type}
+              ariaLabel="gameType"
               name="gameType"
               options={types.map((type) => ({ value: type, label: type }))}
               onChange={handleSelectGameType}

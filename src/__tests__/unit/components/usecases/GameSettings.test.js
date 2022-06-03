@@ -1,9 +1,9 @@
-import reduxConfig from '../../../store/redux'
-import { mocks } from '../../../constants/settings'
+import reduxConfig from '../../../../store/redux'
+import { mocks } from '../../../../constants/settings'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
-import ExerciseContext from '../../../store/context/Exercise/context'
-import GameSettings from '../../../components/usecases/GameSettings'
+import ExerciseContext from '../../../../store/context/Exercise/context'
+import GameSettings from '../../../../components/usecases/GameSettings'
 
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'

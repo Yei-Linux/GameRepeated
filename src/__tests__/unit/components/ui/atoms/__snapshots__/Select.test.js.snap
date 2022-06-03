@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Select Component Should reder input component 1`] = `
+<DocumentFragment>
+  <select
+    aria-label="selectTest"
+    class="inputCustom select select--pd1 select--primary"
+    name="selectTest"
+    placeholder="input"
+  >
+    <option
+      data-testid="optionOne"
+      value="optionOne"
+    >
+      optionOne
+    </option>
+    <option
+      data-testid="optionTwo"
+      value="optionTwo"
+    >
+      optionTwo
+    </option>
+  </select>
+</DocumentFragment>
+`;
