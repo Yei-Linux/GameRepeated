@@ -31,13 +31,15 @@ const FormItem = ({
   return (
     <Container testId={testId} padding={0} className={className}>
       {label && <Label text={`${label}:`} htmlFor={htmlFor} />}
-      <Element
-        ariaLabel={ariaLabel}
-        name={name}
-        onChange={handleChange}
-        defaultValue={value}
-        className={classNameInput}
-      />
+      {Element && (
+        <Element
+          ariaLabel={ariaLabel}
+          name={name}
+          onChange={handleChange}
+          defaultValue={value}
+          className={classNameInput}
+        />
+      )}
     </Container>
   )
 }

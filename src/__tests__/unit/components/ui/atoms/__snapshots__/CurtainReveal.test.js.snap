@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The CurtainReveal component Should render CurtainReveal component 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-curtain-23 "
+  >
+    <div
+      class="makeStyles-curtain_wrapper-24"
+    >
+      <button
+        class="makeStyles-curtain_trigger_box-29 makeStyles-hide-32"
+      />
+      <div
+        class="makeStyles-curtain_panel-25 makeStyles-curtain_panel_left-26 makeStyles-reveal_left-30"
+      />
+      <div
+        class="makeStyles-curtain_content-28"
+      >
+        <p>
+          TextUI
+        </p>
+      </div>
+      <div
+        class="makeStyles-curtain_panel-25 makeStyles-curtain_panel_right-27 makeStyles-reveal_right-31"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

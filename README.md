@@ -30,10 +30,11 @@
     - jest.fn and returnValues on callbacks
     - jest.spyOn
     - jest.mock with modules
+    - mocks
     - mock resolved value
     - mock resolved value once
 
-## 5. TESTING REACT ROUTER COMPONENTS
+## 4. TESTING REACT ROUTER COMPONENTS
 
     - test react router
     - coverage

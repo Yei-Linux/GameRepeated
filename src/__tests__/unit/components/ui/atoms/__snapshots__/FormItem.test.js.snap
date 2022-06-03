@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Form Item component FormItem with label Should render FormItem with label component 1`] = `
+<DocumentFragment>
+  <div
+    class="formItemClass container--pd0"
+    data-testid="formitem-test"
+  >
+    <label
+      class="label"
+      for="labelFormItem"
+    >
+      LabelUI:
+    </label>
+    <input
+      aria-label="inputFormItem"
+      autocomplete="off"
+      class="inputClass input input--primary input--border1 input--pd1"
+      name="inputFormItem"
+      type="text"
+      value="b"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Form Item component FormItem without label Should render FormItem without label component 1`] = `
+<DocumentFragment>
+  <div
+    class="formItemClass container--pd0"
+    data-testid="formitem-test"
+  >
+    <input
+      aria-label="inputFormItem"
+      autocomplete="off"
+      class="inputClass input input--primary input--border1 input--pd1"
+      name="inputFormItem"
+      type="text"
+      value="b"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -32,7 +32,7 @@
     "start": "concurrently \"npm run server-start\" \"npm run react-start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:single": "react-scripts test --testPathPattern=dataHelper.test.js",
+    "test:single": "react-scripts test --testPathPattern=CurtainReveal.test.js",
     "test:updateSnapshots": "react-scripts test --updateSnapshot",
     "test:updateSpecificSnapshots": "react-scripts test --testPathPattern=Button.test.js --updateSnapshot",
     "test:coverage": "react-scripts test --coverage",
